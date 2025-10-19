@@ -16,7 +16,7 @@ jobs:
      - name: Publish Blazor App
        run: dotnet publish -c Release -o dist
      - name: Update Base HREF
-       run: sed -i 's|<base href="/" />|<base href="/<repository-name>/" />|' dist/wwwroot/index.html
+       run: sed -i 's|<base href="/" />|<base href="/RKISArray/" />|' dist/wwwroot/index.html
      - name: Add .nojekyll and 404.html
        run: |
          touch dist/wwwroot/.nojekyll
