@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+on:
+ push:
+   branches:
+     - main
+jobs:
+ deploy:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout Code
+       uses: actions/checkout@v2
+     - name: Setup .NET SDK
+       uses: actions/setup-dotnet@v1
+       with:
+         dotnet-version: 9.0.x
+     - name: Publish Blazor App
+       run: dotnet publish -c Release -o dist
+     - name: Update Base HREF
+       run: sed -i 's|<base href="/" />|<base href="/<repository-name>/" />|' dist/wwwroot/index.html
+     - name: Add .nojekyll and 404.html
+       run: |
+         touch dist/wwwroot/.nojekyll
+         cp dist/wwwroot/index.html dist/wwwroot/404.html
+     - name: Deploy to GitHub Pages
+       uses: JamesIves/github-pages-deploy-action@v4
+       with:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         BRANCH: gh-pages
+         FOLDER: dist/wwwroot
