@@ -1,0 +1,47 @@
+.array_input {
+    margin: 20px;
+    border: 5px ridge #e5e5e5;
+    padding: 10px;
+}
+
+.array_output {
+    margin: 20px;
+    border: 5px ridge #e5e5e5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.select {
+    width: 20vw;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+    height: fit-content;
+}
+
+.textarea {
+    width: 100%;
+    height: 50vh;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+    resize: none;
+    white-space: pre-wrap;
+}
+
+.checkbox {
+    width: 20vw;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+}
+
+@media (max-width: 641px) {
+    .parent {
+        margin-bottom: 20vw;
+    }
+}

@@ -1,0 +1,84 @@
+@page "/array1"
+@using Models;
+
+<PageTitle>Вывод двумерного массива</PageTitle>
+
+<div class="parent">
+    <div class="array_input">
+        <p>Столбцы <input type="number" class="input" @bind-value="Columns" placeholder="Столбцы" /></p>
+        <p>Строки <input type="number" class="input" @bind-value="Rows" placeholder="Строки" /></p>
+        <button @onclick="CreateMatrix">Создать матрицу</button>
+
+        @if (array != null && array.Length >= 1)
+        {
+            <p>Введи элемент массива (array[@index]): <input type="number" @bind-value="array[index]" /></p>
+
+            <button @onclick="IncrementIndex">Ввести элемент</button>
+        }
+    </div>
+
+    @if (array != null && array.Length >= 1)
+    {
+        <div class="array_output">
+            <textarea type="textarea" class="textarea" readonly="true">
+                @if (array != null && array.Length >= 1)
+                {
+                    @for (int i = 0; i < Columns; i++)
+                    {
+                        int ii = i;
+                        @for (int j = 0; j < Rows; j++)
+                        {
+                            int jj = j;
+                            @array[ii * Columns + jj];
+                            @IHateWhiteSpace;
+                        }
+                        @IHateWhiteSpace2;
+                    }
+                }
+            </textarea>
+        </div>
+    }
+</div>
+
+@code {
+
+    private static int _rows = 3;
+    private static int _columns = 3;
+
+    string IHateWhiteSpace = " ";
+    string IHateWhiteSpace2 = "\n";
+    private int index = 0;
+
+    private int[]? array;
+
+    private static int Rows
+    {
+        get => _rows;
+        set
+        {
+            _rows = value;
+        }
+    }
+    private static int Columns
+    {
+        get => _columns;
+        set
+        {
+            _columns = value;
+        }
+    }
+
+    private void IncrementIndex()
+    {
+        if (array != null && index < Rows * Columns - 1)
+        {
+            index++;
+        }
+    }
+
+    private void CreateMatrix()
+    {
+        array = new int[Rows * Columns];
+    }
+
+}

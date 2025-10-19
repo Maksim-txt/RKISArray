@@ -1,0 +1,40 @@
+﻿@inherits LayoutComponentBase
+@using Models;
+
+
+<div class="page">
+    <main>
+        <div class="top-row px-4 center darkblue header">
+            <a class="no-wrap" href="/">Главная</a>
+            <div class="dropdown">
+                <button class="dropbtn " @onclick="dropBtn">Массивы</button>
+                <div class="dropdown-content @show">
+                    <a class="no-wrap" href="/array1">Одномерные массивы</a>
+                    <a class="no-wrap" href="/array2">Двумерные массивы</a>
+                    <a class="no-wrap" href="/array3">Матрицы</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom center darkblue">
+            <a class="no-wrap" href="/">Главная</a>
+            <a class="no-wrap" href="/array1">Одномерные массивы</a>
+            <a class="no-wrap" href="/array2">Двумерные массивы</a>
+            <a class="no-wrap" href="/array3">Матрицы</a>
+        </div>
+
+
+        <article>
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    protected static string show = "";
+    protected void dropBtn()
+    {
+        if (show == "show") show = "";
+        else show = "show";
+    }
+}

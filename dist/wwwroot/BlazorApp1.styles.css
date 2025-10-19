@@ -1,0 +1,435 @@
+/* /Components/DialogComponent.razor.rz.scp.css */
+.overlay[b-tbp6p0ubhh] {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.dialog[b-tbp6p0ubhh] {
+    width: 750px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.dialog .dialog-header[b-tbp6p0ubhh] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 2rem; */
+    /* padding-top: 2rem; */
+    padding-right: 2rem;
+    /* padding-bottom: 2rem; */
+    padding-left: 2rem;
+    background-color: darkblue;
+    color: white;
+    /* margin: 2rem;*/
+}
+
+.dialog .dialog-body[b-tbp6p0ubhh] {
+    padding: 2rem;
+    background-color: darkgrey;
+    border: 2px solid grey;
+}
+
+.dialog .dialog-footer[b-tbp6p0ubhh] {
+    padding: 2rem;
+    background-color: darkgrey;
+    border: 2px solid grey;
+}
+
+
+.close[b-tbp6p0ubhh] {
+    height: 40px;
+    width: 40px;
+    background-color: darkred;
+    transition: 0.25s ease;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: x-large;
+}
+
+.close:hover[b-tbp6p0ubhh] {
+    background-color: rgb(184, 2, 2);
+}
+/* /Layout/MainLayout.razor.rz.scp.css */
+.page[b-5383j6hyu8] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom[b-5383j6hyu8] {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    justify-self: center;
+}
+
+.header[b-5383j6hyu8] {
+    display: flex;
+    width: 100%;
+    min-width: min-content;
+    margin: 0;
+    padding: 0;
+}
+
+.header>a[b-5383j6hyu8] {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.bottom>a[b-5383j6hyu8] {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.dropdown[b-5383j6hyu8] {
+    display: relative;
+}
+
+.dropbtn[b-5383j6hyu8] {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Dropdown content */
+.dropdown-content[b-5383j6hyu8] {
+    display: none;
+    position: absolute;
+    background-color: lightgray;
+    min-width: 200px;
+    border: 5px ridge #e5e5e5;
+}
+
+/* Links inside dropdown content */
+.dropdown-content a[b-5383j6hyu8] {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.show[b-5383j6hyu8] {
+    display: block;
+}
+
+.none[b-5383j6hyu8] {
+    display: none;
+}
+
+@media (max-width: 641px) {
+    .header[b-5383j6hyu8] {
+        display: none;
+    }
+}
+
+@media (min-width: 641px) {
+    .bottom[b-5383j6hyu8] {
+        display: none;
+    }
+
+    .page[b-5383j6hyu8] {
+        flex-direction: row;
+    }
+}
+/* /Pages/Array1.razor.rz.scp.css */
+.array_input[b-liyh0xknag] {
+    margin: 20px;
+    border: 5px ridge #e5e5e5;
+    padding: 10px;
+}
+
+.array_output[b-liyh0xknag] {
+    margin: 20px;
+    border: 5px ridge #e5e5e5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.select[b-liyh0xknag] {
+    width: 20vw;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+    height: fit-content;
+}
+
+.textarea[b-liyh0xknag] {
+    width: 100%;
+    height: 50vh;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+    resize: none;
+    white-space: pre-wrap;
+}
+
+.checkbox[b-liyh0xknag] {
+    width: 20vw;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+}
+
+.parent[b-liyh0xknag] {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+}
+
+@media (max-width: 641px) {
+    .parent[b-liyh0xknag] {
+        margin-bottom: 20vw;
+    }
+}
+/* /Pages/Array2.razor.rz.scp.css */
+.array_input[b-o25bbtba6i] {
+    margin: 20px;
+    border: 5px ridge #e5e5e5;
+    padding: 10px;
+}
+
+.array_output[b-o25bbtba6i] {
+    margin: 20px;
+    border: 5px ridge #e5e5e5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.select[b-o25bbtba6i] {
+    width: 20vw;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+    height: fit-content;
+}
+
+.textarea[b-o25bbtba6i] {
+    width: 20vw;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+    resize: none;
+    white-space: pre-wrap;
+}
+
+.checkbox[b-o25bbtba6i] {
+    width: 20vw;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+}
+
+.parent[b-o25bbtba6i] {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+}
+
+@media (max-width: 641px) {
+    .parent[b-o25bbtba6i] {
+        margin-bottom: 20vw;
+    }
+}
+/* /Pages/Array3.razor.rz.scp.css */
+.parent[b-5f5jdparc8] {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.lightgray[b-5f5jdparc8] {
+    background-color: lightgray;
+}
+
+.table[b-5f5jdparc8] {
+    margin-top: 10px;
+    display: block;
+    max-height: 50vh;
+    overflow: scroll;
+    border: 2px inset lightgray;
+    align-self: baseline;
+    background-color: lightgray;
+    max-width: 85vw;
+}
+
+.matrix[b-5f5jdparc8] {
+    display: flex;
+    flex-direction: column;
+    border: 5px ridge #e5e5e5;
+    padding: 10px;
+    margin: 20px;
+    background-color: white;
+}
+
+.table p[b-5f5jdparc8] {
+    margin: 0;
+}
+
+.row[b-5f5jdparc8] {
+    flex-direction: row;
+}
+
+.column[b-5f5jdparc8] {
+    flex-direction: column;
+}
+
+.flex-container[b-5f5jdparc8] {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    border-radius: 0;
+}
+
+.input[b-5f5jdparc8] {
+    width: 50px;
+    height: 3vw;
+    border: 2px solid grey;
+    font-size: larger;
+}
+
+.sizemetr>.input[b-5f5jdparc8] {
+    width: 10vw;
+    height: 3vw;
+}
+
+.sizemetr[b-5f5jdparc8] {
+    border: 5px ridge #e5e5e5;
+    padding: 10px;
+    margin: 20px;
+    background-color: white;
+
+}
+
+.none[b-5f5jdparc8] {
+    display: none;
+}
+
+.render[b-5f5jdparc8] {
+    display: block;
+}
+
+input[b-5f5jdparc8]::-webkit-outer-spin-button,
+input[b-5f5jdparc8]::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+@media (max-width: 641px) {
+    .flex-container[b-5f5jdparc8] {
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .parent[b-5f5jdparc8] {
+        justify-content: center;
+        margin-bottom: 20vw;
+    }
+
+    .input[b-5f5jdparc8] {
+        width: 20vw;
+        height: 5vw;
+        font-size: larger;
+    }
+
+    .sizemetr>.input[b-5f5jdparc8] {
+        width: 20vw;
+        height: 3vw;
+    }
+
+    .table[b-5f5jdparc8] {
+        max-width: 100%;
+    }
+
+    .flex-center[b-5f5jdparc8] {
+        margin: 0;
+        padding: 0;
+    }
+}
+/* /Pages/Home.razor.rz.scp.css */
+*[b-rnrr1pkvg1] {
+    box-sizing: border-box;
+}
+
+.none[b-rnrr1pkvg1] {
+    display: none;
+}
+
+.mob-parent[b-rnrr1pkvg1] {
+    box-sizing: border-box;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: green;
+}
+
+.mob-body[b-rnrr1pkvg1] {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    background-color: brown;
+}
+
+.menu-bottom[b-rnrr1pkvg1] {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10vh;
+    align-self: flex-end;
+    background-color: rgb(60, 0, 172);
+}
+
+.flex-item[b-rnrr1pkvg1] {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    background-color: rgb(185, 37, 173);
+}
+
+.mob-parent a[b-rnrr1pkvg1] {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.mob-parent a:hover[b-rnrr1pkvg1] {
+    color: rgb(112, 133, 255);
+}
+
+@media (max-width: 500px) {
+    .mob-parent[b-rnrr1pkvg1] {
+        display: flex;
+    }
+}

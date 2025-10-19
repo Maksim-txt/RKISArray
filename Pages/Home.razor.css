@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+.none {
+    display: none;
+}
+
+.mob-parent {
+    box-sizing: border-box;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: green;
+}
+
+.mob-body {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    background-color: brown;
+}
+
+.menu-bottom {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10vh;
+    align-self: flex-end;
+    background-color: rgb(60, 0, 172);
+}
+
+.flex-item {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    background-color: rgb(185, 37, 173);
+}
+
+.mob-parent a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.mob-parent a:hover {
+    color: rgb(112, 133, 255);
+}
+
+@media (max-width: 500px) {
+    .mob-parent {
+        display: flex;
+    }
+}

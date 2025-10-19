@@ -1,0 +1,122 @@
+.parent {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.lightgray {
+    background-color: lightgray;
+}
+
+.table {
+    margin-top: 10px;
+    display: block;
+    max-height: 50vh;
+    overflow: scroll;
+    border: 2px inset lightgray;
+    align-self: baseline;
+    background-color: lightgray;
+    max-width: 85vw;
+}
+
+.matrix {
+    display: flex;
+    flex-direction: column;
+    border: 5px ridge #e5e5e5;
+    padding: 10px;
+    margin: 20px;
+    background-color: white;
+}
+
+.table p {
+    margin: 0;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.flex-container {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    border-radius: 0;
+}
+
+.input {
+    width: 50px;
+    height: 3vw;
+    border: 2px solid grey;
+    font-size: larger;
+}
+
+.sizemetr>.input {
+    width: 10vw;
+    height: 3vw;
+}
+
+.sizemetr {
+    border: 5px ridge #e5e5e5;
+    padding: 10px;
+    margin: 20px;
+    background-color: white;
+
+}
+
+.none {
+    display: none;
+}
+
+.render {
+    display: block;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+@media (max-width: 641px) {
+    .flex-container {
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .parent {
+        justify-content: center;
+        margin-bottom: 20vw;
+    }
+
+    .input {
+        width: 20vw;
+        height: 5vw;
+        font-size: larger;
+    }
+
+    .sizemetr>.input {
+        width: 20vw;
+        height: 3vw;
+    }
+
+    .table {
+        max-width: 100%;
+    }
+
+    .flex-center {
+        margin: 0;
+        padding: 0;
+    }
+}

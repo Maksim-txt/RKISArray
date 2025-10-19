@@ -1,0 +1,138 @@
+@page "/array3"
+@using BlazorApp1.Components;
+@using Models;
+
+<PageTitle>Двумерные массивы</PageTitle>
+
+<DialogComponent Title="Hello World!" Opened="dialogShown" CloseButtonClicked="@(() => dialogShown = false)">
+    <BodyContent>
+        <p style="font-size: 13px;">
+            <p>Матрица <input type="number" class="input" @bind-value="MatrixId1"/></p>
+            <p>Матрица <input type="number" class="input" @bind-value="MatrixId2"/></p>
+        </p>
+    </BodyContent>
+    <FooterContent>
+        <button @onclick="multiply">Умножить</button>
+    </FooterContent>
+</DialogComponent>
+
+<div class="parent">
+    <div class="flex-container lightgray flex-center border column">
+
+        <div class="sizemetr">
+            <p>Столбцы <input type="number" class="input" @bind-value="Columns" placeholder="Столбцы" /></p>
+            <p>Строки <input type="number" class="input" @bind-value="Rows" placeholder="Строки" /></p>
+            <button @onclick="CreateMatrix">Submit</button>
+
+            <button @onclick="ShowDialog">Умножение матриц</button>
+        </div>
+
+        @if (matrices.Count >= 1)
+        {
+            foreach (Matrix matrix in matrices)
+            {
+                
+                <div class="matrix">
+                    <p>Матрица @matrix.Id</p>
+                    <table class="table">
+                        @if (matrix.Rows >= 1 && matrix.Columns >= 1)
+                        {
+                            @for (int i = 0; i < matrix.Columns; i++)
+                            {
+                                int ii = i;
+                                <tr>
+                                    @for (int j = 0; j < matrix.Rows; j++)
+                                    {
+                                        int jj = j;
+                                        <td>
+                                            <p><input type="number" class="input" @bind-value="matrix.array[ii * matrix.Rows + jj]" /></p>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        }
+                    </table> 
+                </div>
+            }
+        }
+    </div>
+
+</div>
+
+@code {
+
+    private List<Matrix> matrices = new List<Matrix>();
+    private bool dialogShown = false;
+    private static int _rows = 3;
+    private static int _columns = 3;
+
+    private static int _matrixId1 = 0;
+    private static int _matrixId2 = 1;
+
+    private static int MatrixId1
+    {
+        get => _matrixId1;
+        set
+        {
+            _matrixId1 = value;
+        }
+    }
+    private static int MatrixId2
+    {
+        get => _matrixId2;
+        set
+        {
+            _matrixId2 = value;
+        }
+    }
+
+    private static int Rows
+    {
+        get => _rows;
+        set
+        {
+            _rows = value;
+        }
+    }
+    private static int Columns
+    {
+        get => _columns;
+        set
+        {
+            _columns = value;
+        }
+    }
+
+    private void CreateMatrix()
+    {
+        matrices.Add(new Matrix(Rows, Columns));
+    }
+
+    private void ShowDialog()
+    {
+        dialogShown = true;
+    }
+
+    private void multiply()
+    {
+        int[] matrix1 = matrices[MatrixId1].array;
+        int[] matrix2 = matrices[MatrixId2].array;
+        if (matrices[MatrixId1].Rows!= matrices[MatrixId2].Columns)
+        {
+            throw new Exception("Умножение не возможно! Количество столбцов первой матрицы не равно количеству строк второй матрицы.");
+        }
+        Matrix matrixC = new Matrix(matrices[MatrixId1].Rows, matrices[MatrixId2].Columns);
+        int[]? arrayC = new int[matrices[MatrixId1].Rows * matrices[MatrixId2].Columns];
+        for (int i = 0; i < matrices[MatrixId1].Rows; i++)
+        {
+            for (int j = 0; j < matrices[MatrixId2].Columns; j++)
+            {
+                arrayC[i * matrices[MatrixId1].Rows + j] = 0;
+                for (int k = 0; k < matrices[MatrixId2].Columns; k++)
+                    arrayC[i * matrices[MatrixId1].Rows + j] += matrix1[i * matrices[MatrixId1].Rows + k] * matrix2[k * matrices[MatrixId2].Columns + j];
+            }
+        }
+        matrixC.array = arrayC;
+        matrices.Add(matrixC);
+    }
+}
