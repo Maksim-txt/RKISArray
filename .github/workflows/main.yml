@@ -16,7 +16,7 @@ jobs:
      - name: Publish Blazor App
        run: dotnet publish -c Release -o dist
      - name: Update Base HREF
-       run: sed -i 's|<base href="/" />|<base href="/RKISArray/" />|' dist/wwwroot/index.html
+       run: sed -i 's|<base href="/" />|<base href="\/RKISArray\/" />|' dist/wwwroot/index.html
      - name: Add .nojekyll and 404.html
        run: |
          touch dist/wwwroot/.nojekyll
@@ -24,6 +24,5 @@ jobs:
      - name: Deploy to GitHub Pages
        uses: JamesIves/github-pages-deploy-action@v4
        with:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          BRANCH: gh-pages
          FOLDER: dist/wwwroot
