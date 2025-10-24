@@ -4,15 +4,39 @@
 
 <PageTitle>Двумерные массивы</PageTitle>
 
-<DialogComponent Title="Hello World!" Opened="dialogShown" CloseButtonClicked="@(() => dialogShown = false)">
+<DialogComponent Title="Hello World!" Opened="dialogShown" CloseButtonClicked="@(() => {dialogShown = false;  errorOccurred = false;})">
     <BodyContent>
-        <p style="font-size: 13px;">
-            <p>Матрица <input type="number" class="input" @bind-value="MatrixId1"/></p>
-            <p>Матрица <input type="number" class="input" @bind-value="MatrixId2"/></p>
-        </p>
+        @if (!errorOccurred) {
+            <p style="font-size: 13px;">
+                <select class="select" @bind="MatrixId1" >
+                    @if (matrices != null && matrices.Count >= 1)
+                    {
+                        @foreach(var matrix in matrices)
+                        {
+                            <option>@matrix.Id</option>
+                        }
+                    }
+                </select>
+                <select class="select" @bind="MatrixId2" >
+                    @if (matrices != null && matrices.Count >= 1)
+                    {
+                        @foreach(var matrix in matrices)
+                        {
+                            <option>@matrix.Id</option>
+                        }
+                    }
+                </select>
+            </p>
+        }
+        @if(error != null && errorOccurred == true) {
+            <p>@error.message</p>
+        }
+
     </BodyContent>
     <FooterContent>
-        <button @onclick="multiply">Умножить</button>
+        @if (!errorOccurred){
+            <button @onclick="multiply">Умножить</button>
+        }
     </FooterContent>
 </DialogComponent>
 
@@ -22,9 +46,12 @@
         <div class="sizemetr">
             <p>Столбцы <input type="number" class="input" @bind-value="Columns" placeholder="Столбцы" /></p>
             <p>Строки <input type="number" class="input" @bind-value="Rows" placeholder="Строки" /></p>
-            <button @onclick="CreateMatrix">Submit</button>
+            <button @onclick="CreateMatrix">Создать матрицу</button>
 
-            <button @onclick="ShowDialog">Умножение матриц</button>
+            @if (matrices.Count >= 2){
+                <button @onclick="ShowDialog">Умножение матриц</button>
+            }
+
         </div>
 
         @if (matrices.Count >= 1)
@@ -62,12 +89,13 @@
 @code {
 
     private List<Matrix> matrices = new List<Matrix>();
+    private Error error;
     private bool dialogShown = false;
     private static int _rows = 3;
     private static int _columns = 3;
-
-    private static int _matrixId1 = 0;
-    private static int _matrixId2 = 1;
+    private bool errorOccurred = false;
+    private static int _matrixId1 = 1;
+    private static int _matrixId2 = 2;
 
     private static int MatrixId1
     {
@@ -115,24 +143,34 @@
 
     private void multiply()
     {
-        int[] matrix1 = matrices[MatrixId1].array;
-        int[] matrix2 = matrices[MatrixId2].array;
-        if (matrices[MatrixId1].Rows!= matrices[MatrixId2].Columns)
+
+        int matrixId1 = MatrixId1 - 1;
+        int matrixId2 = MatrixId2 - 1;
+        int[] matrix1 = matrices[matrixId1].array;
+        int[] matrix2 = matrices[matrixId2].array;
+        if (matrices[matrixId2].Columns  != matrices[matrixId1].Rows)
         {
-            throw new Exception("Умножение не возможно! Количество столбцов первой матрицы не равно количеству строк второй матрицы.");
+            errorOccurred = true;
+            error = new Error("Умножение не возможно! Количество столбцов первой матрицы не равно количеству строк второй матрицы.");
+            ShowDialog();
         }
-        Matrix matrixC = new Matrix(matrices[MatrixId1].Rows, matrices[MatrixId2].Columns);
-        int[]? arrayC = new int[matrices[MatrixId1].Rows * matrices[MatrixId2].Columns];
-        for (int i = 0; i < matrices[MatrixId1].Rows; i++)
-        {
-            for (int j = 0; j < matrices[MatrixId2].Columns; j++)
+        if (!errorOccurred){
+            Matrix matrixC = new Matrix(matrices[matrixId1].Rows, matrices[matrixId2].Columns);
+            int[]? arrayC = new int[matrices[matrixId1].Rows * matrices[matrixId2].Columns];
+            for (int i = 0; i < matrices[matrixId1].Rows; i++)
             {
-                arrayC[i * matrices[MatrixId1].Rows + j] = 0;
-                for (int k = 0; k < matrices[MatrixId2].Columns; k++)
-                    arrayC[i * matrices[MatrixId1].Rows + j] += matrix1[i * matrices[MatrixId1].Rows + k] * matrix2[k * matrices[MatrixId2].Columns + j];
+                for (int j = 0; j < matrices[matrixId2].Columns; j++)
+                {
+                    arrayC[i * matrices[matrixId1].Rows + j] = 0;
+                    for (int k = 0; k < matrices[matrixId2].Columns; k++)
+                        arrayC[i * matrices[matrixId1].Rows + j] += matrix1[i * matrices[matrixId1].Rows + k] * matrix2[k * matrices[matrixId2].Columns + j];
+                }
             }
+            matrixC.array = arrayC;
+            matrices.Add(matrixC);
+
+            dialogShown = false;
         }
-        matrixC.array = arrayC;
-        matrices.Add(matrixC);
+        
     }
 }
