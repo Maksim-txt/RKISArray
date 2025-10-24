@@ -279,7 +279,7 @@
     border: 5px ridge #e5e5e5;
     padding: 10px;
     margin: 20px;
-    background-color: white;
+    background-color: lightgray;
 }
 
 .table p[b-oayo55lw5m] {
@@ -304,7 +304,6 @@
 
 .input[b-oayo55lw5m] {
     width: 50px;
-    height: 3vw;
     border: 2px solid grey;
     font-size: larger;
 }
@@ -318,7 +317,7 @@
     border: 5px ridge #e5e5e5;
     padding: 10px;
     margin: 20px;
-    background-color: white;
+    background-color: lightgray;
 
 }
 
@@ -336,6 +335,13 @@ input[b-oayo55lw5m]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
     /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.select[b-oayo55lw5m] {
+    width: 20vw;
+    background-color: rgb(255, 255, 255);
+    border: 2px inset lightgrey;
+    height: fit-content;
 }
 
 @media (max-width: 641px) {
